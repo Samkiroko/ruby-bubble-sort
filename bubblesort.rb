@@ -17,5 +17,3 @@ def bubble_sort(arr)
     }
     return arr
 end
-
-bubble_sort([11,2,4,3,9,5,10])
