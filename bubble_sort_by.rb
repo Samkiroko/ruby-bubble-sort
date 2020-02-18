@@ -1,20 +1,25 @@
 # creating bubble sort that accept a block
 
-def bubble_sort_by(array)
-  n = array.length - 1
-  (array.length - 1).times do
-    switched = false
-    n.times do |i|
-      if yield(array[i], array[i + 1]).positive?
-        array[i], array[i + 1] = array[i + 1], array[i]
-        switched = true
-      end
-    end
-    break unless switched
+def bubble_sort_by(arr)
+  arr.each do |_left, _right|
+    i = 0
+    swap = 0
 
-    n -= 1
+    while i < arr.length - 1
+      yield_ = yield(arr[i], arr[i + 1]) if block_given?
+
+      yield_ = arr[i] > arr[i + 1]
+      if yield_
+        temp = arr[i]
+        arr[i] = arr[i + 1]
+        arr[i + 1] = temp
+      end
+      i += 1
+      swap += 1
+    end
+    break if swap.zero?
   end
-  [array, array.length - n]
+  arr
 end
 
-print bubble_sort_by(%w[howww hello hey hoooow]) { |left, right| left.length - right.length }
+print bubble_sort_by(%w[howww hello hey hoooow hhhhey world]) { |left, right| left.length - right.length }
