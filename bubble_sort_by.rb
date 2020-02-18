@@ -6,10 +6,9 @@ def bubble_sort_by(arr)
     swap = 0
 
     while i < arr.length - 1
-      yield_ = yield(arr[i], arr[i + 1]) if block_given?
-
-      yield_ = arr[i] > arr[i + 1]
-      if yield_
+      yield_ = block_given? ? yield(arr[i], arr[i + 1]) : yield_ = arr[i] > arr[i + 1]
+      # yield_ = arr[i] > arr[i + 1]
+      if yield_ && yield_.positive?
         temp = arr[i]
         arr[i] = arr[i + 1]
         arr[i + 1] = temp
@@ -22,4 +21,4 @@ def bubble_sort_by(arr)
   arr
 end
 
-print bubble_sort_by(%w[howww hello hey hoooow hhhhey world]) { |left, right| left.length - right.length }
+print bubble_sort_by(%w[howww hello hey hoooow hhhheyyyy world]) { |left, right| left.length - right.length }
