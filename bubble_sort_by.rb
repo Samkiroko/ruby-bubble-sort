@@ -1,7 +1,7 @@
 # creating bubble sort that accept a block
 
 def bubble_sort_by(arr)
-  arr.each do |_left, _right|
+  arr.each do |_left|
     i = 0
     swap = 0
 
