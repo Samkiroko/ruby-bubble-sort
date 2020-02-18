@@ -8,7 +8,7 @@ def bubble_sort_by(arr)
     while i < arr.length - 1
       yield_ = block_given? ? yield(arr[i], arr[i + 1]) : yield_ = arr[i] > arr[i + 1]
       # yield_ = arr[i] > arr[i + 1]
-      if yield_ && yield_.positive?
+      if yield_&.positive?
         temp = arr[i]
         arr[i] = arr[i + 1]
         arr[i + 1] = temp
